@@ -52,7 +52,7 @@ $( document ).ready(function() {
                 console.log(msg);
             });
         function validate(username,phone,addressLine1, password, conPassword){
-            if(valPassword(password) &&  valNumber(phone)){
+            if(valPassword(password) &&  valNumber(phone) && confValidate (password, conPassword)){
                 globalObject.user = {} ;
                 globalObject.user.username = username;
                 globalObject.user.email = "addressLine@1";
@@ -74,7 +74,19 @@ $( document ).ready(function() {
             } else{
                 return false;
             }
-        };
+        }
+
+        function confValidate (password, conPassword) {
+            if(password == conPassword) {
+                $("#confirm-pasword").text("valid");
+            }
+            else {
+                $("#confirm-pasword").text("invalid");
+            }
+
+
+        }
+
         function valNumber(phone){
             let patt = new RegExp(/^\d{3}-\d{3}-\d{4}$/);
             let res = patt.test(phone);
@@ -84,6 +96,6 @@ $( document ).ready(function() {
             }
             return true;
         }
-    })
+    });
 });
 
