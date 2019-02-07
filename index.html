@@ -11,22 +11,32 @@
 </head>
 <body>
 <div class="container">
-    <!--<div class="logIn centered">-->
-        <!--<input id="email">-->
-        <!--<input id="password2">-->
-        <!--<button id="button">sendData</button>-->
-    <!--</div>-->
+    <h2>LOG IN</h2>
+    <div class="logIn centered">
+        <input id="email">
+        <input id="password2">
+        <button id="button">Log in</button>
+    </div>
+
+    <h2>REGISTER</h2>
     <div class="register">
+        
         <div>
-            <input class="space" id="username" >
+            <input class="space" placeholder="user name" id="username" >
             <span class="span-red" id="username-span"></span>
         </div>
+
+        <div>
+            <input class="space" placeholder="email" id="email" >
+            <span class="span-red" id="email-span"></span>
+        </div>
+
         <div>
             <span>+38</span><input placeholder="123-456-7890" id="phone">
             <span class="span-red" id="phone-span"></span>
         </div>
         <div>
-            <input class="space" id="addressLine1">
+            <input class="space" placeholder="addres line" id="addressLine1">
             <span class="span-red" id="addressLine1-span"></span>
         </div>
         <div>
@@ -39,6 +49,30 @@
         </div>
         <button class="space" id="register">Register</button>
     </div>
+
+
+
+</div>
+
+<div class="container">
+    <h2>Get All Users</h2>
+    <button id="allUsers">Get All Users</button>
+    <table>
+        <tr>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address Line</th>
+        </tr>
+        <tbody id="usersTable"></tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h2>Choose the sign</h2>
+    <select name="" id="signSelector"></select>
+    <h2>Your horoscope for today is:</h2>
+    <div id="currentHoroscope" onchange=""></div>
 </div>
 
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->

@@ -15,19 +15,20 @@ $( document ).ready(function() {
    // RUSER REGISTER
     $("#register").click(function () {
         var globalObject={};
-        // let username = $("#username").val();
-        // let phone = $("#phone").val();
-        // let addressLine1 = $("#addressLine1").val();
-        // let password = $("#password1").val();
-
-        let username = "khrystyna rymar";
-        let phone = "123-456-7890";
-        let email = "reyerry@hmai.yu";
-        let addressLine1 = "Bandery 33";
-        let password ="Kh2ertyu";
-
+        let username = $("#username").val();
+        let email = $("#email").val();
+        let phone = $("#phone").val();
+        let addressLine1 = $("#addressLine1").val();
+        let password = $("#password1").val();
         let conPassword = $("#confirmpassword").val();
-        validate(username,phone,addressLine1, password,conPassword,email);
+        // let username = "khrystyna rymar";
+        // let phone = "123-456-7890";
+        // let email = "reyerry@hmai.yu";
+        // let addressLine1 = "Bandery 33";
+        // let password ="Kh2ertyu";
+
+        
+        validate(username, email, phone,addressLine1, password,conPassword);
         //var currentUser = JSON.stringify(globalObject.user);
         //\r currentPasword = JSON.stringify(globalObject.password);
         // url: 'superman',
@@ -45,22 +46,23 @@ $( document ).ready(function() {
         $.ajax({
             method: "POST",
             url: "https://mainacademydemo1.azurewebsites.net/api/User/Register?" + jQuery.param({password:globalObject.password}),
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            data:globalObject.user,
+            contentType: 'application/json; charset=UTF-8',
+            data:JSON.stringify(globalObject.user),
         })
             .done(function (msg) {
                 console.log(msg);
             });
-        function validate(username,phone,addressLine1, password, conPassword){
+        function validate(username, email, phone,addressLine1, password, conPassword){
             if(valPassword(password) &&  valNumber(phone) && confValidate (password, conPassword)){
                 globalObject.user = {} ;
                 globalObject.user.username = username;
-                globalObject.user.email = "addressLine@1";
-                globalObject.user.phone = phone;
+                globalObject.user.email = email;
+                globalObject.user.phone = phone;    
                 globalObject.user.addressLine1 = addressLine1;
                 globalObject.user.addressLine2 = addressLine1;
                 
                 globalObject.password = password;
+                globalObject.conPassword = conPassword;
             } else{
                 return false;
             }
@@ -96,6 +98,35 @@ $( document ).ready(function() {
             }
             return true;
         }
+    });
+
+    //Get All Users
+
+    $("#allUsers").click(function(){
+        $.ajax({
+            method: "GET",
+            url: "https://mainacademydemo1.azurewebsites.net/api/User",
+           
+        })
+        .done(function( users ) {
+            if(users === [] || users === null || users.length ===0){
+                return;
+            } else
+            var tableBody = $("#usersTable");
+            tableBody.empty();
+            for(var i=0; i<users.length; i++){
+                tableBody.append("<tr><td>" + users[i].username + "</td><td>"+
+                    users[i].email+"</td><td>"+
+                    users[i].phone+"</td><td><button class='adressBtn' id='"+users[i].addressLine1+"'>Show Adress</button></td></tr>");
+            }
+            var allButtons = $(".adressBtn");
+            for(var j=0; j<allButtons.length; j++){
+                allButtons[j].addEventListener("click", getBtn);
+            }
+            function getBtn(){
+                alert (this.id);
+            }
+        });
     });
 });
 
