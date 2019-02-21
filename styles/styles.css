@@ -5,4 +5,9 @@
 .space {
   margin-left: 28px;
 }
-/*# sourceMappingURL=styles.css.map */
+.main-container {
+  margin-bottom: 20px;
+}
+.card {
+  width: 18em;
+}
