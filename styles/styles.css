@@ -1,14 +1,11 @@
-.span-red {
-  color: red;
-  font-size: 10px;
-}
-.space {
-  margin-left: 28px;
-}
-.main-container {
+#main-container {
   margin-bottom: 20px;
+}
+.card {
+  width: 18rem;
 }
 .cont {
   width: 50px;
   height: 50px;
 }
+/*# sourceMappingURL=styles.css.map */
