@@ -3,7 +3,8 @@ requirejs.config({
     paths:{
         jquery:'libs/jquery-3.3.1',
         mymethods:'myScripts/myMethods',
-        coolmet:'myScripts/coolMethods'
+        coolmet:'myScripts/coolMethods',
+        myteam:'myScripts/'
     }
 });
  requirejs(["myScripts/app"]);
